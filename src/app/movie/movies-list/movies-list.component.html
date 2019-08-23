@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row justify-content-end">
+
+        <form class="form-inline">
+            <input [(ngModel)]="searchTerm" name="filter" class="form-control mr-sm-2" type="search" placeholder="Search by title" aria-label="Search">
+
+            <select class="custom-select" (change)="filterDate($event.target.value)">
+                <option selected>Select a start year</option>
+                <option  *ngFor="let year of startYearList" [value]="year">{{ year }}</option>
+            </select>
+        </form>
+
+    </div>
+    <div class="row justify-content-md-center">
+
+        <table class="table col-md-10">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Genre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let movie of movies  | movieFilter:searchTerm | yearFilter:selectedYear">
+                    <td>{{ movie.originalTitle }}</td>
+                    <td>{{ movie.startYear }} </td>
+                    <td>{{ movie.genres }}
+                        <button (click)="editMovie(movie)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            edit <img src="../assets/images/edit.png" height="20">
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit movie "{{ editedMovie?.originalTitle }}"</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form #form="ngForm" (submit)="updateMovie(form)" ngNativeValidate>
+                <div class="modal-body">
+                    <label for="inputTitle" class="sr-only">Title</label>
+                    <input ngModel #movieTitle="ngModel" name="originalTitle" id="inputTitle" class="form-control input-1" [value]="editedMovie?.originalTitle" placeholder="Title" required>
+
+                    <label for="inputYear" class="sr-only">Date</label>
+                    <input ngModel #movieYear="ngModel" name="startYear" id="inputYear" class="form-control input-2" [value]="editedMovie?.startYear" placeholder="Year" required>
+
+                    <label for="inputGenre" class="sr-only">Genre</label>
+                    <!-- <input ngModel #movieGenre="ngModel" name="genre" id="inputGenre" class="form-control input-3" [value]="editedMovie?.genres" placeholder="Année de sortie" required> -->
+                    <ng-select ngModel #movieGenre="ngModel" name="genres" id="inputGenre" [items]="genreList" [(ngModel)]="selectedGenres" [multiple]="true" [hideSelected]="true" bindLabel="name" placeholder="Genre">
+                    </ng-select>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+.table {
+    margin-top: 5%;
+    button {
+        float: right;
+    }
+}
+
+form {
+    .input-1 {
+        margin-bottom: 8px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    .input-2 {
+        margin-bottom: 8px;
+        border-radius: 0;
+    }
+    .input-3 {
+        margin-bottom: 30px;
+        margin-top: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+}

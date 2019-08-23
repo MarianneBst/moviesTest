@@ -1,0 +1,21 @@
+header {
+    margin-bottom: 40px;
+    .site-header {
+        background-color: rgba(0, 0, 0, .85);
+        .container {
+            a {
+                color: rgba(196, 196, 196, 0.863);
+                font-size: 15px;
+                transition: ease-in-out color .15s;
+                width: 100%;
+                &:hover {
+                    color: white;
+                    text-decoration: none;
+                }
+                img {
+                    margin-right: 5%;
+                }
+            }
+        }
+    }
+}
