@@ -7,8 +7,8 @@ import { Movie } from '../movie.interface';
 export class YearFilterPipe implements PipeTransform {
 
   transform(value: Movie[], selectedYear: string = ''): any {
-    if (selectedYear !== "") {
-      let result = value.filter((movie: Movie) => movie.startYear.includes(selectedYear));
+    if (selectedYear !== '' && selectedYear !== 'Select a year') {
+      const result = value.filter((movie: Movie) => movie.startYear.includes(selectedYear));
       return result;
     } else {
       return value;

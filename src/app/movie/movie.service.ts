@@ -10,10 +10,10 @@ import { Movie } from "./movie.interface";
 export class MovieService {
     private _url: string = '/assets/data/db.json';
 
-    constructor(private _http: HttpClient){
+    constructor(private _http: HttpClient) {
     }
 
-    getMovies(): Observable<Movie[]>{
+    getMovies(): Observable<Movie[]> {
         return this._http.get<Movie[]>(this._url).pipe(
             catchError(err => throwError(err || 'Error'))
         );

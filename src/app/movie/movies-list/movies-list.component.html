@@ -5,7 +5,7 @@
             <input [(ngModel)]="searchTerm" name="filter" class="form-control mr-sm-2" type="search" placeholder="Search by title" aria-label="Search">
 
             <select class="custom-select" (change)="filterDate($event.target.value)">
-                <option selected>Select a start year</option>
+                <option selected>Select a year</option>
                 <option  *ngFor="let year of startYearList" [value]="year">{{ year }}</option>
             </select>
         </form>
@@ -27,7 +27,7 @@
                     <td>{{ movie.startYear }} </td>
                     <td>{{ movie.genres }}
                         <button (click)="editMovie(movie)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            edit <img src="../assets/images/edit.png" height="20">
+                            Edit <img src="../assets/images/edit.png" height="20">
                         </button>
                     </td>
                 </tr>

@@ -41,44 +41,43 @@ export class MoviesListComponent implements OnInit {
       this.genreList = this.movies.map( movie => movie.genres);
       // split couple of genre
       this.genreList.map( genres => {
-        let tmp = genres.split(',');
+        const tmp = genres.split(',');
         tmp.forEach(element => {
           this.genreList2.push(element);
         });
       });
       // delete duplicate
       this.genreList = this.genreList2.filter((genre, index, list) => index === list.indexOf(genre));
-    });
+    }, err => console.error(err));
   }
 
   filterDate(year) {
     this.selectedYear = year;
-    console.log(year);
   }
 
   editMovie(selectedMovie) {
     this.editedMovie = selectedMovie;
     this.selectedGenres = selectedMovie.genres.split(',');
-    console.log(this.selectedGenres);
   }
 
   updateMovie(form: NgForm) {
 
     // if input modified
-    if (form.value.originalTitle !== "") {
+    if (form.value.originalTitle !== '') {
       this.editedMovie.originalTitle = form.value.originalTitle;
+      this.editedMovie.primaryTitle
+       = form.value.originalTitle;
     }
-    if (form.value.startYear !== "") {
+    if (form.value.startYear !== '') {
       this.editedMovie.startYear = form.value.startYear;
     }
 
-    let genresSelected: string = "";
-    console.log(form.value.genres);
+    let genresSelected = '';
     
-    if (form.value.tags != []) {
+    if (form.value.tags !== []) {
       this.selectedGenres.forEach(genre => {
-        if (genresSelected != "") {
-          genresSelected += ",";
+        if (genresSelected !== '') {
+          genresSelected += ',';
         }
         genresSelected += genre;
       });

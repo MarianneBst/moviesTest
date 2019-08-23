@@ -16,7 +16,6 @@ import { MovieModule } from './movie/movie.module';
     AppRoutingModule,
     MovieModule,
     HttpClientModule,
-    
 
   ],
   providers: [],
