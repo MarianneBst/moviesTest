@@ -26,6 +26,7 @@
                     <td>{{ movie.originalTitle }}</td>
                     <td>{{ movie.startYear }} </td>
                     <td>{{ movie.genres }}
+                        <!-- Button trigger modal -->
                         <button (click)="editMovie(movie)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                             Edit <img src="../assets/images/edit.png" height="20">
                         </button>
@@ -35,8 +36,6 @@
         </table>
     </div>
 </div>
-
-<!-- Button trigger modal -->
 
 
 <!-- Modal -->

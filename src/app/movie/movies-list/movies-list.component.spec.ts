@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MoviesListComponent } from './movies-list.component';
+import { FormsModule } from '@angular/forms';
+import { MovieFilterPipe } from '../filters/movie-filter.pipe';
+import { YearFilterPipe } from '../filters/year-filter.pipe';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('MoviesListComponent', () => {
   let component: MoviesListComponent;
@@ -8,7 +13,8 @@ describe('MoviesListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MoviesListComponent ]
+      imports: [FormsModule, NgSelectModule, HttpClientModule],
+      declarations: [ MoviesListComponent, MovieFilterPipe, YearFilterPipe ]
     })
     .compileComponents();
   }));
@@ -22,4 +28,5 @@ describe('MoviesListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

@@ -18,14 +18,14 @@ export class MoviesListComponent implements OnInit {
   public editedMovie: Movie;
   public selectedGenres = [];
 
-  constructor(private _moviesService: MovieService) {}
+  constructor(public _moviesService: MovieService) {}
 
   ngOnInit() {
-    this.searchTerm = "";
+    this.searchTerm = '';
     this.startYearList = [];
     this.genreList = [];
     this.genreList2 = [];
-    this.selectedYear = "";
+    this.selectedYear = '';
     this.editedMovie = null;
 
     // get all the movies
